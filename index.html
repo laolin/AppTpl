@@ -10,7 +10,10 @@
                   // Try to execute the Javascript
                   try {
                       eval(resources.js);
-                      APP.applicationController.start(resources, storeResources);
+                      APP.applicationController.start(resources);
+                      if (storeResources) {
+                        localStorage.resources = JSON.stringify(resources);
+                      }
                   // If the Javascript fails to launch, stop execution!
                   } catch (e) {
                       alert(APP_START_FAILED);
